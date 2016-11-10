@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Test Place to Play from Alejandro S&aacute;nchez</title>
+		<meta charset="UTF-8">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+		<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+		<script type="text/javascript" src="js/prueba.js"></script>
+
+		<link rel='stylesheet' href='style.css' type='text/css' media='all' />
+			
+	</head>
+
+	<body ng-app="formulario" ng-controller="mainController">
+
+		<div class="container" style="margin-top:2rem;"> 
+			<div class="col-md-12 no-padding logo">
+				<h3 style="font-weight:bold">LOGO EMRPESA</h3>
+			</div>
+
+			<!--formulario-->
+			<div class="col-xs-7 col-lg-6 no-padding">
+				<div>
+					<!--informacion-->
+					<p class="info-form">Para poder realizar el pago, ingrese sus datos y seleccione el métdo de pago con el cual desea efectuarlo</p>
+				</div>
+
+				
+				<div class="content-form">				
+
+						<form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
+							<!--datos personales-->
+							<div id="datos-personales">
+								<label class="titulo-form">
+									Sus datos personales
+								</label>
+
+							<div class="form-group" ng-class="{ 'has-error' : userForm.nombre.$invalid && !userForm.nombre.$pristine }" >
+							    <label>Nombre</label>
+							    <input type="text" class="form-control" name="nombre" ng-model="nombre" placeholder="Escriba su nombre completo" required>
+							    <!--texto error-->
+							    <p ng-show="userForm.nombre.$invalid && !userForm.nombre.$pristine" class="help-block">Su nombre es requerido.</p>
+							</div>
+
+							<div class="form-group"  ng-class="{ 'has-error' : userForm.apellido.$invalid && !userForm.apellido.$pristine }">
+							    <label>Apellidos</label>
+							    <input type="text" class="form-control" name="apellido" ng-model="apellido" required placeholder="Escriba sus apellidos completo">
+							    <!--texto error-->
+							    <p ng-show="userForm.apellido.$invalid && !userForm.apellido.$pristine" class="help-block">Su apellido es requerido.</p>
+							</div>
+
+							<div class="row">
+								<div class="form-group col-xs-6" ng-class="{ 'has-error' : userForm.tipoDocumento.$invalid && !userForm.tipoDocumento.$pristine }">
+								    <label>Tipo de documento</label>
+								    <select class="form-control" name="tipoDocumento" ng-model="tipoDocumento" required>
+								    	<option disabled selected>Seleccione</option>
+								    	<option>Cédula Ciudadana</option>
+								    	<option>Cédula extranjera</option>
+								    	<option>Pasaporte</option>
+								    </select>
+								    <!--texto error-->
+								    <p ng-show="userForm.tipoDocumento.$invalid && !userForm.tipoDocumento.$pristine" class="help-block">Su apellido es requerido.</p>
+								</div>
+
+								<div class="form-group col-xs-6" ng-class="{ 'has-error' : userForm.numIdentidad.$invalid && !userForm.numIdentidad.$pristine }">
+								    <label>Número de identidad</label>
+								    <input type="number" class="form-control" name="numIdentidad" ng-model="numIdentidad" required placeholder="Número de identidad">
+								    <!--texto error-->
+								    <p ng-show="userForm.numIdentidad.$invalid && !userForm.numIdentidad.$pristine" class="help-block">Su número de identidad es requerido.</p>
+								</div>
+
+							</div>
+
+						
+							<div class="form-group"  ng-class="{ 'has-error' : userForm.indiTelefono.$invalid && !userForm.indiTelefono.$pristine,  'has-error' : userForm.numTelefono.$invalid && !userForm.numTelefono.$pristine, }">
+							    <label>Teléfono</label>
+							    <div class="row">
+							    	<div class="col-xs-3 no-padding-right">
+							    		<input type="tel" class="form-control"  placeholder="Eje (052)" ng-minlength="3" ng-maxlength="5" name="indiTelefono" ng-model="indiTelefono" required>
+							    		<!--texto error-->
+							    		<p ng-show="userForm.indiTelefono.$invalid && !userForm.indiTelefono.$pristine" class="help-block">Su número indicativo de télefono.</p>
+							    	</div>
+							    	<div class="col-xs-4 no-padding">
+							    		<input type="tel" class="form-control"  placeholder="Eje 44444444" ng-minlength="7" ng-maxlength="10" name="numTelefono" ng-model="numTelefono" required>
+							    		<!--texto error-->
+							    		<p ng-show="userForm.numTelefono.$invalid && !userForm.numTelefono.$pristine" class="help-block">Su número de teélefono es requerido.</p>
+							    	</div>
+							    </div>	
+							</div>
+
+							<div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+							    <label>E-mail</label>
+							    <input type="email" class="form-control" name="email" ng-model="user.email" placeholder="Eje nombre@empresa.com" required>
+							    <!--texto error-->
+							    <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
+							</div>
+						</div><!-- fin datos personales-->
+
+						<!-- medio de pago-->
+						<div class="medio-pago">
+							<label class="titulo-form">
+								¿Cúal es su medio de pago?
+							</label>
+
+							<div class="medios-pago">
+								<div>
+									<button type="button" class="btn btn-default bt_efectivo" ng-style="bt_efectivo" ng-click="mostrarEfectivo()">EFECTIVO</button>
+									<a ng-style="bt_pse" ng-click="mostrarPSE()" >
+										<img src="img/pse.png" >
+									</a>
+
+									<a ng-style="bt_visa" ng-click="mostrarVisa()">
+										<img src="img/visa.png" >
+									</a>
+
+									<a ng-style="bt_master" ng-click="mostrarMaster()">
+										<img src="img/master.png" >
+									</a>
+									
+									
+								</div>
+							</div>
+
+							<!--formulario medio pago -->
+							<div class="form-medio-pago">
+								<!-- efectivo-->
+								<!-- No exite campos extra para pago efectivo-->
+								<div id="efectivo" ng-show="efectivo" ></div>	
+
+
+								<!--pse-->
+								<div id="pse" ng-show="pse" >									
+									
+										<div class="form-group" ng-class="{'hover-error' : userForm.banco.$invalid && !userForm.banco.$pristine }">
+										    <label>Banco</label>
+										    <select class="form-control" name="banco" ng-modal="banco" required>
+										    	<option disabled selected>Seleccione</option>
+										    	<option>Bancolombia</option>
+										    	<option>Banco de Bogotá</option>
+										    	<option>Banco Davivienda</option>	
+										    </select>
+										    <p ng-show="userForm.banco.$invalid && !userForm.banco.$pristine" class="help-block">Su número de tarjeta es requerido</p>
+										</div>
+
+										<div class="form-group" ng-class="{'hover-error' : userForm.tipoCuenta.$invalid && !userForm.tipoCuenta.$pristine }">
+										    <label>Tipo de cuenta</label>
+										    <select class="form-control" name="tipoCuenta" ng-modal="tipoCuenta" required> 
+										    	<option disabled selected>Seleccione</option>
+										    	<option>Cuenta de ahorro</option>
+										    	<option>Cuenta corriente</option>
+										    </select>
+										    <p ng-show="userForm.tipoCuenta.$invalid && !userForm.tipoCuenta.$pristine" class="help-block">Su número de tarjeta es requerido</p>
+										</div>
+
+									 
+								</div><!--fin pse-->
+
+								<!--visa -->
+								<div id="visa" ng-show="visa">	
+
+									<div class="form-group" ng-class="{ 'has-error' : userForm.numTarjeta.$invalid && !userForm.numTarjeta.$pristine }" >
+									    <label>Número de la tarjeta</label>
+									    <input type="number" name="numTarjeta" class="form-control" ng-model="numTarjeta" ng-minlength="16" ng-maxlength="16" placeholder="Número de la tarjeta" required>
+									    <!--texto error-->
+									     <p ng-show="userForm.numTarjeta.$invalid && !userForm.numTarjeta.$pristine" class="help-block">Su número de tarjeta es requerido</p>
+									</div>	
+
+									<div class="form-group" ng-class="{ 'has-error' : userForm.mes.$invalid && !userForm.mes.$pristine, 'has-error' : userForm.year.$invalid && !userForm.year.$pristine }">
+									    <label>Fecha de vencimiento</label>
+									    	<div class="row">
+									    		<!--mes-->
+									    		<div class="col-xs-3" >
+												    <input class="form-control" type="number" name="mes" ng-model="mes" max="12" required>	
+												    <!--texto error-->
+												    <p ng-show="userForm.mes.$invalid && !userForm.mes.$pristine" class="help-block">El mes es requerido.</p>
+											   </div>
+											    
+											   <!--año-->
+											    <div class="col-xs-3">
+												    <input class="form-control" type="number" name="year" ng-model="year" ng-maxlength="2" min="16" required>	
+												    <!--texto error-->
+												    <p ng-show="userForm.year.$invalid && !userForm.year.$pristine" class="help-block">El año es requerido.</p>
+												 </div>
+												
+											 </div>
+									</div>
+
+									<div class="form-group" ng-class="{ 'has-error' : userForm.codSeg.$invalid && !userForm.codSeg.$pristine}">
+									    <label>Código de seguridad</label>
+									    <div class="row">
+										    <div class=" col-xs-3">
+											    <input type="number"name="codSeg"class="form-control" ng-model="codSeg" ng-maxlength="3" required>
+											    <!--texto error-->
+											   <p ng-show="userForm.codSeg.$invalid && !userForm.codSeg.$pristine" class="help-block">Codigo de seguridad requerido.</p>
+										    </div>
+									    </div>
+									</div>
+
+									<div class="form-group" ng-class="{ 'has-error' : userForm.cuota.$invalid && !userForm.cuota.$pristine}">
+									    <label>Número de cuotas</label>
+									    <div class="row">
+										    <div class=" col-xs-3">
+											    <input type="number"name="cuota"class="form-control" ng-model="cuota" ng-maxlength="2" max="72" required>
+											    <!--texto error-->
+											    <p ng-show="userForm.cuota.$invalid && !userForm.cuota.$pristine" class="help-block">Máximo 72 cuotas.</p>
+										    </div>
+										    
+									    </div>
+									</div>
+									
+								</div><!--fin visa-->
+
+								<!--master -->
+								<div id="master" ng-show="master">	
+
+									<div class="form-group" ng-class="{ 'has-error' : userForm.numTarjeta.$invalid && !userForm.numTarjeta.$pristine }" >
+									    <label>Número de la tarjeta</label>
+									    <input type="number" name="numTarjeta" class="form-control" ng-model="numTarjeta" ng-minlength="16" ng-maxlength="16" placeholder="Número de la tarjeta" required>
+									    <!--texto error-->
+									     <p ng-show="userForm.numTarjeta.$invalid && !userForm.numTarjeta.$pristine" class="help-block">Su número de tarjeta es requerido</p>
+									</div>	
+
+									<div class="form-group" ng-class="{ 'has-error' : userForm.mes.$invalid && !userForm.mes.$pristine, 'has-error' : userForm.year.$invalid && !userForm.year.$pristine }">
+									    <label>Fecha de vencimiento</label>
+									    	<div class="row">
+									    		<!--mes-->
+									    		<div class="col-xs-3" >
+												    <input class="form-control" type="number" name="mes" ng-model="mes" max="12" required>	
+												    <!--texto error-->
+												    <p ng-show="userForm.mes.$invalid && !userForm.mes.$pristine" class="help-block">El mes es requerido.</p>
+											   </div>
+											    
+											   <!--año-->
+											    <div class="col-xs-3">
+												    <input class="form-control" type="number" name="year" ng-model="year" ng-maxlength="2" min="16" required>	
+												    <!--texto error-->
+												    <p ng-show="userForm.year.$invalid && !userForm.year.$pristine" class="help-block">El año es requerido.</p>
+												 </div>
+												
+											 </div>
+									</div>
+
+									<div class="form-group" ng-class="{ 'has-error' : userForm.codSeg.$invalid && !userForm.codSeg.$pristine}">
+									    <label>Código de seguridad</label>
+									    <div class="row">
+										    <div class=" col-xs-3">
+											    <input type="number"name="codSeg"class="form-control" ng-model="codSeg" ng-maxlength="3" required>
+											    <!--texto error-->
+											   <p ng-show="userForm.codSeg.$invalid && !userForm.codSeg.$pristine" class="help-block">Codigo de seguridad requerido.</p>
+										    </div>
+									    </div>
+									</div>
+
+									<div class="form-group" ng-class="{ 'has-error' : userForm.cuota.$invalid && !userForm.cuota.$pristine}">
+									    <label>Número de cuotas</label>
+									    <div class="row">
+										    <div class=" col-xs-3">
+											    <input type="number"name="cuota"class="form-control" ng-model="cuota" ng-maxlength="2" max="72" required>
+											    <!--texto error-->
+											    <p ng-show="userForm.cuota.$invalid && !userForm.cuota.$pristine" class="help-block">Máximo 72 cuotas.</p>
+										    </div>
+										    
+									    </div>
+									</div>
+									
+								</div><!--fin master-->
+
+							</div><!-- fin  formulario medio pago -->
+
+						</div><!-- fin medio de pago-->
+
+
+
+
+						<!-- termino condiciones-->
+						<div class="condiciones">
+							<label class="checkbox-inline">
+							  <input type="checkbox" id="acepto" value="1"> Acepto términos y condiciones
+							</label>
+						</div><!-- fin termino condiciones-->	
+
+						 <!--boton pago-->
+						 <div class="boton-pago">
+						     <button type="submit" class="btn btn-default" id="pagar" ng-disabled="userForm.$invalid">PAGAR</button>
+						  </div> <!-- fin boton pago-->
+
+						  <!--cancelar pago-->
+						  <div class="cancelar">
+							<p>Si deea cancelar la transaccion de click <a href="">aquí</a> </p>
+						</div><!--fin cancelar pago-->
+
+					</form>	<!--fin formulario-->
+				</div>	<!--fin content-->				
+			</div><!--fin formulario-->
+
+			<!--info pago-->
+			<div class="info-pago">
+				<table class="table table-bordered">
+					<thead>
+						<th colspan="2">Información de pago</th>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Referencia</td>
+							<td id"ref">124567687</td>
+						</tr>					
+						<tr>
+							<td>Descipción de la compra</td>
+							<td id"descripcion">Pago Tienda Y</td>
+						</tr>
+						<tr>
+							<td><h3>Total a pagar</h3></td>
+							<td id"valor"><h3>$ 200,000.00</h3></td>
+						</tr>
+					</tbody>
+				 
+				</table>
+			</div><!--fin info pago-->
+		</div><!--fin col-7-->
+		</div><!--fin container-->
+
+	</body>
+</html>

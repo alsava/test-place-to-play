@@ -1,0 +1,218 @@
+
+.container{
+	padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.no-padding{
+	padding: 0px;
+}
+
+.no-padding-right{
+	padding-right:  0px;
+}
+
+.info-pago{
+   position:fixed;
+   right:5%;
+   top:10px;
+   width: 30%;
+   background-color: white;
+}
+
+.info-form{
+	font-size:14px;
+}
+
+.content-form{
+	background: #EEF2F3;
+	padding: 3%;
+
+}
+
+.titulo-form{
+	border-bottom-style: solid;
+    border-bottom-width: 2px;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    border-bottom-color: #b0afaf;
+}
+
+.condiciones{
+	margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+.medio-pago{
+	margin-top: 3rem;
+}
+
+.boton-pago{
+	width: 20%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.cancelar{
+	margin-top: 2rem;
+}
+
+.bt_efectivo, .bt_efectivo :active{
+	height: 40px;
+	margin-right: 2rem;
+	background: #8CC63F;
+	text-shadow:none;
+	opacity: 1;
+}
+
+.bt_efectivo:hover{
+	opacity: 0.8;
+	background: #8CC63F;
+}
+
+.medios-pago a{
+	margin-right: 2rem; 
+	opacity: 0.5;
+}
+
+.medios-pago a:hover{
+	text-decoration: none !important;
+	opacity: 0.8 !important;
+	cursor: pointer;
+}
+
+
+.medios-pago a img {	
+	height: 40px;	
+}
+
+
+.form-medio-pago{
+	margin-top: 3rem;
+}
+
+.info-pago th {
+	text-align: center;
+
+}
+
+/*css resultados**/
+.titulo{
+	margin-top: 4rem;
+	margin-bottom: 3rem;
+}
+.titulo h3{
+	font-weight:bold; 
+	text-align:center;
+}
+
+.tablaResultado{
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+
+	font-size: 14px;
+}
+
+.tablaResultado tbody tr td, .tablaResultado tbody tr th{
+	padding: 6px
+}
+
+.tablaResultado thead th{
+	text-align: center;
+}
+
+.contacto{
+	text-align: center;
+}
+
+@media (min-width: 360px){
+
+	.info-pago{
+		width: 79%;
+		right: 10.5%;
+		position: absolute;
+	}
+
+	.logo{
+		margin-top: 35%;
+	}
+
+	.container .col-xs-7{
+		width: 100%;
+	}
+
+}
+
+
+
+@media (min-width: 660px){
+
+	.info-pago{
+		width: 79%;
+		right: 10.5%;
+		position: absolute;
+	}
+
+	.logo{
+		margin-top: 35%;
+	}
+
+	.container .col-xs-7{
+		width: 100%;
+	}
+
+}
+
+@media (min-width: 785px){
+	.container {
+	    width: 750px;
+	}
+
+	.info-pago{
+		right:5%;
+		width: 30%;
+	}
+
+
+	.logo{
+		margin-top: 0%;
+	}
+
+	.container .col-xs-7{
+		width: 58.3%;
+	}
+	
+}
+
+@media (min-width: 992px){
+	.container {
+	    width: 970px;
+	}
+
+	.info-pago{
+		right:5%;
+		width: 32%;
+	}
+	
+
+	
+}
+
+@media (min-width: 1200px){
+	.container {
+	    width: 1170px;
+	}
+
+	.info-pago{
+		right:5%;
+		width: 30%;
+	}
+	
+}
+
+	
+}
